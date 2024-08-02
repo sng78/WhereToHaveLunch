@@ -5,16 +5,16 @@ import java.time.LocalDate;
 public class Dish extends AbstractNamedEntity {
     private LocalDate date;
     private int price;
-    private Integer restaurantId;
+    private Restaurant restaurant;
 
     public Dish() {
     }
 
-    public Dish(Integer id, String name, LocalDate date, int price, Integer restaurantId) {
+    public Dish(Integer id, String name, LocalDate date, int price, Restaurant restaurant) {
         super(id, name);
         this.date = date;
         this.price = price;
-        this.restaurantId = restaurantId;
+        this.restaurant = restaurant;
     }
 
     public LocalDate getDate() {
@@ -33,11 +33,11 @@ public class Dish extends AbstractNamedEntity {
         this.price = price;
     }
 
-    public Integer getRestaurantId() {
-        return restaurantId;
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public void setRestaurantId(Integer restaurantId) {
-        this.restaurantId = restaurantId;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 }

@@ -1,27 +1,27 @@
 package io.github.sng78.wheretohavelunch.model;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.Set;
+import java.util.*;
 
 public class User extends AbstractNamedEntity {
     private String email;
     private String password;
+    private boolean enabled;
+    private Date registered = new Date();
     private Set<Role> roles;
 
     public User() {
     }
 
-    public User(Integer id, String name, String email, String password, Collection<Role> roles) {
+    public User(Integer id, String name, String email, String password, Role... roles) {
+        this(id, name, email, password, true, Arrays.asList(roles));
+    }
+
+    public User(Integer id, String name, String email, String password, boolean enabled, Collection<Role> roles) {
         super(id, name);
         this.email = email;
         this.password = password;
+        this.enabled = enabled;
         setRoles(roles);
-    }
-
-    public User(Integer id, String name, String email, String password, Role... roles) {
-        this(id, name, email, password, Arrays.asList(roles));
     }
 
     public String getEmail() {
@@ -38,6 +38,22 @@ public class User extends AbstractNamedEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Date getRegistered() {
+        return registered;
+    }
+
+    public void setRegistered(Date registered) {
+        this.registered = registered;
     }
 
     public Set<Role> getRoles() {

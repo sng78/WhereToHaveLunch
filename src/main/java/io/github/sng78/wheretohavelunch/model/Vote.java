@@ -2,34 +2,34 @@ package io.github.sng78.wheretohavelunch.model;
 
 import java.time.LocalDate;
 
-public class Vote extends AbstractNamedEntity {
-    private Integer userId;
-    private Integer restaurantId;
+public class Vote extends AbstractBaseEntity {
+    private User user;
+    private Restaurant restaurant;
     private LocalDate date;
 
     public Vote() {
     }
 
-    public Vote(Integer userId, Integer restaurantId, LocalDate date) {
-        this.userId = userId;
-        this.restaurantId = restaurantId;
+    public Vote(User user, Restaurant restaurant, LocalDate date) {
+        this.user = user;
+        this.restaurant = restaurant;
         this.date = date;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Integer getRestaurantId() {
-        return restaurantId;
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public void setRestaurantId(Integer restaurantId) {
-        this.restaurantId = restaurantId;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public LocalDate getDate() {
