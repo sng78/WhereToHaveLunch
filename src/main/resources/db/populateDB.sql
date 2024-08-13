@@ -1,0 +1,32 @@
+DELETE FROM USER_ROLE;
+DELETE FROM USERS;
+DELETE FROM RESTAURANT;
+DELETE FROM DISH;
+DELETE FROM VOTE;
+ALTER SEQUENCE GLOBAL_SEQ RESTART WITH 100000;
+
+INSERT INTO USERS (NAME, EMAIL, PASSWORD)
+VALUES ('User1', 'user1@yandex.ru', 'password'),
+       ('User2', 'user2@yandex.ru', 'password'),
+       ('Admin', 'admin@gmail.com', 'admin');
+
+INSERT INTO USER_ROLE (USER_ID, ROLE)
+VALUES (100000, 'USER'),
+       (100001, 'USER'),
+       (100002, 'ADMIN'),
+       (100002, 'USER');
+
+INSERT INTO RESTAURANT (ID, NAME)
+VALUES (100003, 'McDonalds'),
+       (100004, 'Burger King');
+
+INSERT INTO VOTE (DATE, USER_ID, RESTAURANT_ID)
+VALUES ('2024-08-10', 100000, 100003),
+       ('2024-08-10', 100001, 100004),
+       ('2024-08-10', 100002, 100004);
+
+INSERT INTO DISH (NAME, DATE, PRICE, RESTAURANT_ID)
+VALUES ('Картофель фри', '2024-08-10', 100, 100003),
+       ('Биг Мак', '2024-08-10', 300, 100003),
+       ('Картофель фри', '2024-07-10', 120, 100004),
+       ('Ролл с креветками', '2024-08-10', 250, 100004);
