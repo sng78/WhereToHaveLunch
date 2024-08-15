@@ -1,10 +1,25 @@
 package io.github.sng78.wheretohavelunch.model;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "vote")
 public class Vote extends AbstractBaseEntity {
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    @NotNull
     private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id", nullable = false)
+    @NotNull
     private Restaurant restaurant;
+
+    @Column(name = "date", nullable = false)
+    @NotNull
     private LocalDate date;
 
     public Vote() {

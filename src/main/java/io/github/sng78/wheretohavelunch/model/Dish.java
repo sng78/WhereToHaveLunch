@@ -1,10 +1,26 @@
 package io.github.sng78.wheretohavelunch.model;
 
+import org.hibernate.validator.constraints.Range;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "dish")
 public class Dish extends AbstractNamedEntity {
+
+    @Column(name = "date", nullable = false)
+    @NotNull
     private LocalDate date;
+
+    @Column(name = "price", nullable = false)
+    @Range(min = 1)
     private int price;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id", nullable = false)
+    @NotNull
     private Restaurant restaurant;
 
     public Dish() {
